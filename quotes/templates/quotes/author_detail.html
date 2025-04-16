@@ -1,0 +1,19 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Name: {{ author.fullname }}</h2>
+    <p><strong>Birthday:</strong> {{ author.born_date }}</p>
+    <p><strong>born_location:</strong> {{ author.born_location }}</p>
+    <p><strong>description:</strong> {{ author.description }}</p>
+
+    <h3>Quotes:</h3>
+    <ul>
+        {% for quote in author.quotes.all %}
+        <li>{{ quote.text }}</li>
+        {% empty %}
+        <p>No quotes.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

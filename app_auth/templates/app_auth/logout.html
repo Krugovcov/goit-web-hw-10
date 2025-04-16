@@ -1,0 +1,14 @@
+{% extends 'quotes/base.html' %}
+{% block content %}
+
+<div>
+    <h1>Бувай!</h1>
+    <p>Ти дійсно хочеш вийти?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Вийти</button>
+    </form>
+</div>
+
+{% endblock %}
+

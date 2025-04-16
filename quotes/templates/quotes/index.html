@@ -1,0 +1,27 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Quotes</h2>
+    {% for quote in page_obj %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <blockquote class="blockquote">
+                <p>{{ quote.text }}</p>
+                <footer class="blockquote-footer">
+                    by {% if quote.author %}<a href="{% url 'quotes:author_detail' quote.author.id %}">{{ quote.author.fullname }}</a>{% else %}Unknown Author{% endif %}
+
+                </footer>
+            </blockquote>
+            <div>
+                {% for tag in quote.tags.all %}
+                <span class="badge bg-secondary">{{ tag.name }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No quotes.</p>
+    {% endfor %}
+</div>
+{% endblock %}
